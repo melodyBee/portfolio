@@ -1,44 +1,41 @@
-function Navbar() {
-    return (
-        <div className="Navbar">
-            {/* navbar */}
+import { useState } from "react";
 
-            <div className="navbar bg-base-100 shadow-sm">
-                <div className="navbar-start">
-                    <a className="font-monospace border-primary border-2 ml-6 p-1" href="../App.js">
-                        melodyBee
-                    </a>
-                </div>
-                <div className="navbar-start">
-                    <ul className="menu menu-horizontal px-1">
-                        <li>
-                            <a className="btn mr-1 bg-primary rounded-none" href="../App.js">
-                                Desktop
-                            </a>
-                        </li>
-                        <li>
-                            <a className="btn btn mr-1" href="../App.js">
-                                Projects
-                            </a>
-                        </li>
-                        <li>
-                            <a className="btn" href="../App.js">
-                                Articles
-                            </a>
-                        </li>
-                        <li>
-                            <a className="btn" href="../App.js">
-                                Contact
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div className="navbar-end">
-                    <a className="btn">Button</a>
-                </div>
-            </div>
+function Navbar() {
+  const [activeTab, setActiveTab] = useState("Desktop");
+
+  const navItems = ["Desktop", "Projects", "Articles", "Contact"];
+
+  return (
+    <div className="Navbar">
+      <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar-start">
+          <a
+            className="border-2 ml-6 p-1 px-3 border-accent font-headline"
+            href="../App.js"
+          >
+            melodyBee
+          </a>
         </div>
-    )
+        <div className="navbar-end">
+          <ul className="menu menu-horizontal px-1">
+            {navItems.map((item) => (
+              <li key={item}>
+                <a
+                  className={`btn mr-1 rounded-none ${
+                    activeTab === item ? "bg-primary text-white" : ""
+                  }`}
+                  href="../App.js"
+                  onClick={() => setActiveTab(item)}
+                >
+                  {item}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default Navbar
+export default Navbar;
