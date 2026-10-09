@@ -6,22 +6,20 @@ function Navbar() {
   const navItems = ["Desktop", "Projects", "Articles", "Contact"];
 
   return (
-    <div className="Navbar">
+    <div className="Navbar border-b-2 border-primary">
       <div className="navbar bg-base-100 shadow-sm">
         <div className="navbar-start">
           <a
-            className="border-2 ml-6 p-1 px-3 border-accent font-headline"
+            className="btn btn-sm rounded-none bg-white border-2 ml-6 p-1 px-3 border-accent font-headline"
             href="../App.js"
           >
             melodyBee
           </a>
-        </div>
-        <div className="navbar-end">
           <ul className="menu menu-horizontal px-1">
             {navItems.map((item) => (
               <li key={item}>
                 <a
-                  className={`btn mr-1 rounded-none ${
+                  className={`btn btn-sm mr-1 rounded-none ${
                     activeTab === item ? "bg-primary text-white" : ""
                   }`}
                   href="../App.js"
@@ -32,6 +30,14 @@ function Navbar() {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="navbar-end">
+          <button className="btn btn-xs rounded-none bg-secondary mr-2">
+            SYNTH: ON
+          </button>
+          <button className="btn btn-xs rounded-none bg-neutral">
+            14:32 PST
+          </button>
         </div>
       </div>
     </div>
